@@ -1,9 +1,16 @@
-@extends('layouts.admin')
+<x-layout title="Dashboard" pageTitle="Dashboard">
 
-@section('title', 'Dashboard')
-@section('pageTitle', 'Dashboard')
+    <x-slot name="sidebar">
+        <x-sidebar />
+    </x-slot>
 
-@section('content')
+    <x-slot name="navbar">
+        <x-navbar pageTitle="Dashboard" />
+    </x-slot>
+
+    <x-slot name="footer">
+        <x-footer />
+    </x-slot>
 
 {{-- ================================================================
      ROW 1 — WELCOME BANNER
@@ -494,4 +501,4 @@
 </div>
 {{-- END ROW 4 --}}
 
-@endsection
+</x-layout>

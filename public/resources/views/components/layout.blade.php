@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin Panel') | Dandiyama</title>
+    <title>{{ $title ?? 'Admin Panel' }} | Dandiyama</title>
 
     {{-- Bootstrap 5 CSS --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -534,15 +534,13 @@
 
     {{-- ================================================================
          SIDEBAR
-         Partial: resources/views/partials/sidebar.blade.php
          ================================================================ --}}
-    @include('partials.sidebar')
+    {{ $sidebar ?? '' }}
 
     {{-- ================================================================
          TOP NAVBAR
-         Partial: resources/views/partials/navbar.blade.php
          ================================================================ --}}
-    @include('partials.admin_navbar')
+    {{ $navbar ?? '' }}
 
     {{-- ================================================================
          MAIN CONTENT AREA
@@ -550,13 +548,10 @@
          ================================================================ --}}
     <main id="mainContent">
 
-        @yield('content')
+        {{ $slot }}
 
         {{-- Site-wide footer --}}
-        <footer class="admin-footer">
-            &copy; {{ date('Y') }} <strong>Dandiyama</strong> &mdash;
-            Sri Lankan Traditional Event Management System. All rights reserved.
-        </footer>
+        {{ $footer ?? '' }}
 
     </main>
 
